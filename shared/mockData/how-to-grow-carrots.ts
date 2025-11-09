@@ -1,4 +1,7 @@
 import type { BlogPost } from '../types/BlogPost'
+import { jamieCurnow } from './authors/jamie-curnow'
+
+const author = jamieCurnow
 
 export const carrots: BlogPost = {
   id: 'how-to-grow-carrots',
@@ -127,12 +130,7 @@ Follow these steps and you’ll be rewarded with crisp, sweet, and perfectly for
     alt: 'A bunch of freshly harvested carrots',
     caption: 'Freshly harvested carrots from the garden'
   },
-  author: {
-    name: 'Jamie Curnow',
-    url: 'https://dibbler.app/about',
-    image: 'https://avatars.githubusercontent.com/u/29151736?v=4',
-    bio: 'Jamie is a horticulturist and garden writer with over a decade of experience growing vegetables in the UK climate.'
-  },
+  author,
   datePublished: '2025-03-21',
   category: 'Root Vegetables',
   tags: ['carrots', 'sowing', 'root crops', 'spring'],
@@ -156,7 +154,7 @@ Follow these steps and you’ll be rewarded with crisp, sweet, and perfectly for
     description:
       'Learn how to grow carrots in the UK — sowing times, soil preparation, thinning, and harvesting tips.',
     image: 'https://dibbler.app/images/posts/how-to-grow-carrots.jpg',
-    author: { name: 'Jamie Curnow' },
+    author: jamieCurnow,
     publisher: {
       name: 'Dibbler Blog',
       logo: {

@@ -116,7 +116,10 @@ export function useBlogMeta(post: BlogPost) {
       // twitter:site TODO:
       // { name: 'twitter:site', content: '@dibbler' },
     ],
-    link: [{ rel: 'canonical', href: meta.canonical }],
+    link: [
+      { rel: 'canonical', href: meta.canonical },
+      ...(post.author?.slug ? [{ rel: 'author', href: `/author/${post.author.slug}` }] : [])
+    ],
     script: [
       {
         type: 'application/ld+json',

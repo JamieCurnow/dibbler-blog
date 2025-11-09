@@ -61,8 +61,9 @@ export interface BlogPost {
 }
 
 export interface Author {
+  uid: string
+  slug: string
   name: string
-  url?: string
   image?: string
   bio?: string
 }

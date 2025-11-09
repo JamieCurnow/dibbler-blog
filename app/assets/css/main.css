@@ -11,7 +11,7 @@
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-  @apply font-bold tracking-tight;
+  @apply font-bold tracking-tight text-black dark:text-white;
 }
 
 .markdown h1 {
@@ -91,4 +91,9 @@
 
 .markdown th {
   @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+}
+
+/* Heading Anchor Link */
+.markdown .heading-anchor {
+  @apply text-black dark:text-white no-underline hover:no-underline;
 }

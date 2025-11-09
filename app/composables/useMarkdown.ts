@@ -14,14 +14,14 @@ const processor = unified()
   .use(remarkRehype)
   .use(rehypeSlug) // ← adds id="..." to h1–h6 using GitHub-style slugs
   .use(rehypeAutolinkHeadings, {
-    behavior: 'append',
-    properties: { class: 'heading-anchor' },
-    content: {
-      type: 'element',
-      tagName: 'span',
-      properties: { class: 'anchor-icon', 'aria-hidden': 'true' },
-      children: [{ type: 'text', value: ' 🔗' }]
-    }
+    behavior: 'wrap',
+    properties: { class: 'heading-anchor' }
+    // content: {
+    //   type: 'element',
+    //   tagName: 'span',
+    //   properties: { class: 'anchor-icon', 'aria-hidden': 'true' },
+    //   children: [{ type: 'text', value: ' 🔗' }]
+    // }
   })
   .use(rehypeStringify)
 

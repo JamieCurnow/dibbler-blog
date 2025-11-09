@@ -39,7 +39,7 @@
           <div
             class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8 pb-8 border-b border-gray-200 dark:border-gray-700"
           >
-            <NuxtLink :to="post.author.url" class="shrink-0">
+            <NuxtLink :to="`/author/${post.author.uid}`" class="shrink-0">
               <img
                 v-if="post.author.image"
                 :src="post.author.image"
@@ -49,7 +49,8 @@
             </NuxtLink>
             <div class="grow">
               <NuxtLink
-                :to="post.author.url"
+                :to="`/author/${post.author.uid}`"
+                rel="author"
                 class="font-bold text-base text-gray-800 dark:text-gray-200 hover:underline"
               >
                 {{ post.author.name }}
