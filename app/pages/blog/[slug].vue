@@ -62,6 +62,8 @@
             </div>
           </div>
 
+          <AtAGlance v-if="post.atAGlance" :data="post.atAGlance" />
+
           <!-- Post Content -->
           <div class="prose prose-lg dark:prose-invert max-w-none markdown" v-html="html"></div>
         </article>
@@ -93,6 +95,7 @@
 
 <script setup lang="ts">
 import { carrots } from '~~/shared/mockData/how-to-grow-carrots'
+import AtAGlance from '~~/app/components/AtAGlance.vue'
 const post = carrots
 
 // head

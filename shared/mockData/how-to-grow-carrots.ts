@@ -134,6 +134,17 @@ Follow these steps and you’ll be rewarded with crisp, sweet, and perfectly for
   datePublished: '2025-03-21',
   category: 'Root Vegetables',
   tags: ['carrots', 'sowing', 'root crops', 'spring'],
+  atAGlance: {
+    summary:
+      'Sow Feb–Jun in light, stone-free soil; thin to 5 cm; harvest June–Nov. Protect from carrot fly with mesh. Recommended varieties: Nantes 2, Autumn King, Flyaway.',
+    sowingMonths: ['Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    harvestMonths: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+    spacing: {
+      inRow: '5 cm',
+      betweenRows: '15–20 cm',
+      depth: '1 cm'
+    }
+  },
   meta: {
     title: 'How to Grow Carrots (UK Guide) | Dibbler Blog',
     description:

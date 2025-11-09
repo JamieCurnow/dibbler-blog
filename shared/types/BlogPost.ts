@@ -17,6 +17,18 @@ export interface BlogPost {
   category: string
   tags: string[]
 
+  // ─── At a Glance (UI helpers) ───────────────────
+  atAGlance?: {
+    summary?: string
+    sowingMonths?: string[]
+    harvestMonths?: string[]
+    spacing?: {
+      inRow?: string
+      betweenRows?: string
+      depth?: string
+    }
+  }
+
   // ─── SEO Meta ────────────────────────────────────
   meta: {
     title: string
