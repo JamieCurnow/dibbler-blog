@@ -4,6 +4,7 @@ export function useBlogMeta(post: BlogPost) {
   if (!post) return
 
   const { meta, social, schema } = post
+  const canonical = meta.canonical
 
   const jsonLd: any[] = []
 
@@ -11,6 +12,8 @@ export function useBlogMeta(post: BlogPost) {
   const blogPosting = {
     '@context': 'https://schema.org',
     '@type': schema.type,
+    '@id': schema.id || `${canonical}#blogpost`,
+    mainEntityOfPage: schema.mainEntityOfPage || canonical,
     headline: schema.headline,
     description: schema.description,
     image: schema.image,
@@ -23,7 +26,9 @@ export function useBlogMeta(post: BlogPost) {
       name: schema.publisher.name,
       logo: {
         '@type': 'ImageObject',
-        url: schema.publisher.logo
+        url: schema.publisher.logo.url,
+        ...(schema.publisher.logo.width ? { width: schema.publisher.logo.width } : {}),
+        ...(schema.publisher.logo.height ? { height: schema.publisher.logo.height } : {})
       }
     },
     datePublished: post.datePublished,
@@ -37,7 +42,23 @@ export function useBlogMeta(post: BlogPost) {
     jsonLd.push({
       '@context': 'https://schema.org',
       '@type': 'HowTo',
+      '@id': schema.howToId || `${canonical}#howto`,
       name: schema.howTo.name,
+      ...(schema.howTo.totalTime ? { totalTime: schema.howTo.totalTime } : {}),
+      ...(schema.howTo.supply
+        ? {
+            supply: schema.howTo.supply.map((s) =>
+              typeof s === 'string' ? { '@type': 'HowToSupply', name: s } : s
+            )
+          }
+        : {}),
+      ...(schema.howTo.tool
+        ? {
+            tool: schema.howTo.tool.map((t) =>
+              typeof t === 'string' ? { '@type': 'HowToTool', name: t } : t
+            )
+          }
+        : {}),
       step: schema.howTo.steps.map((step) => ({
         '@type': 'HowToStep',
         name: step.name,
@@ -53,6 +74,7 @@ export function useBlogMeta(post: BlogPost) {
     jsonLd.push({
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
+      '@id': schema.faqId || `${canonical}#faq`,
       mainEntity: schema.faq.map((f) => ({
         '@type': 'Question',
         name: f.question,

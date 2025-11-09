@@ -44,10 +44,19 @@ export interface BlogPost {
     author: Author
     publisher: {
       name: string
-      logo: string
+      logo: {
+        url: string
+        width?: number
+        height?: number
+      }
     }
     howTo?: HowToSchema
     faq?: FaqSchema[]
+    // Optional identifiers for linking structured data blocks
+    id?: string // @id for BlogPosting
+    howToId?: string // @id for HowTo block
+    faqId?: string // @id for FAQPage block
+    mainEntityOfPage?: string
   }
 }
 
@@ -61,6 +70,9 @@ export interface Author {
 export interface HowToSchema {
   name: string
   steps: HowToStep[]
+  totalTime?: string // ISO 8601 duration e.g. PT16W
+  supply?: string[] // list of supplies
+  tool?: string[] // list of tools
 }
 
 export interface HowToStep {

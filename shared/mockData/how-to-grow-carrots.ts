@@ -159,10 +159,22 @@ Follow these steps and you’ll be rewarded with crisp, sweet, and perfectly for
     author: { name: 'Jamie Curnow' },
     publisher: {
       name: 'Dibbler Blog',
-      logo: 'https://dibbler.app/images/logo.png'
+      logo: {
+        url: 'https://dibbler.app/images/logo-192.png',
+        width: 192,
+        height: 192
+      }
     },
     howTo: {
       name: 'Grow Carrots from Seed',
+      totalTime: 'P12W',
+      supply: [
+        'Carrot seeds',
+        'Fine compost or seed compost',
+        'Horticultural sand (for heavy soils)',
+        'Insect mesh or fleece (for carrot fly protection)'
+      ],
+      tool: ['Rake', 'Garden fork', 'Watering can or fine rose'],
       steps: [
         { name: 'Prepare soil', text: 'Loosen and remove stones.' },
         { name: 'Sow seeds', text: 'Sow thinly in shallow drills 1 cm deep.' },
