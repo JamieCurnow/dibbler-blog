@@ -27,7 +27,7 @@
               Sowing
             </h3>
             <ul class="flex flex-wrap gap-2">
-              <MonthBadge v-for="m in data.sowingMonths" :key="m">{{ m }}</MonthBadge>
+              <MonthBadge v-for="m in data.sowingMonths" :key="m" :month="m">{{ m }}</MonthBadge>
             </ul>
           </div>
           <div v-if="data.harvestMonths?.length">
@@ -35,7 +35,7 @@
               Harvest
             </h3>
             <ul class="flex flex-wrap gap-2">
-              <MonthBadge v-for="m in data.harvestMonths" :key="m">{{ m }}</MonthBadge>
+              <MonthBadge v-for="m in data.harvestMonths" :key="m" :month="m">{{ m }}</MonthBadge>
             </ul>
           </div>
           <div v-if="data.spacing">
