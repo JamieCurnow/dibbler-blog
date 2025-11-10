@@ -126,7 +126,7 @@ Follow these steps and you’ll be rewarded with crisp, sweet, and perfectly for
 `,
   excerpt: 'Learn how to grow carrots in the UK — sowing times, soil prep, thinning, and harvesting tips.',
   coverImage: {
-    url: 'https://images.immediate.co.uk/production/volatile/sites/10/2018/02/1ebd449e-68bb-44c3-b374-f1147430fdf3-4948239.jpg',
+    url: '/img/carrots.jpg',
     alt: 'A bunch of freshly harvested carrots',
     caption: 'Freshly harvested carrots from the garden'
   },

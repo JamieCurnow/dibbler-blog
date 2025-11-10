@@ -27,7 +27,7 @@ export const jamieCurnow: AuthorProfile = {
   slug: 'jamie-curnow',
   name: 'Jamie Curnow',
   title: 'Horticulturist & Garden Writer',
-  image: 'https://avatars.githubusercontent.com/u/29151736?v=4',
+  image: '/img/jamie-curnow.jpeg',
   bio: 'Jamie is a horticulturist and garden writer with over a decade of experience growing vegetables in the UK climate.',
   yearsExperience: 10,
   focusRegion: 'United Kingdom',

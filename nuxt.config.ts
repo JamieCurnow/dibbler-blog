@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      htmlAttrs: { lang: 'en' },
+      htmlAttrs: { lang: 'en-GB' },
       meta: [
         { name: 'theme-color', content: '#0ea5a4' },
         { 'http-equiv': 'x-ua-compatible', content: 'IE=edge' }

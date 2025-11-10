@@ -95,6 +95,8 @@ export function useBlogMeta(post: BlogPost) {
 
       // OpenGraph
       { property: 'og:title', content: social.ogTitle || meta.title },
+      // og:site_name
+      { property: 'og:site_name', content: social.ogSiteName || 'Dibbler blog' },
       {
         property: 'og:description',
         content: social.ogDescription || meta.description
@@ -103,7 +105,7 @@ export function useBlogMeta(post: BlogPost) {
       { property: 'og:type', content: social.ogType || 'article' },
       { property: 'og:url', content: meta.canonical },
       { property: 'article:published_time', content: post.datePublished },
-      { property: 'article:modified_time', content: post.dateModified || '' },
+      { property: 'article:modified_time', content: post.dateModified || post.datePublished || '' },
       { property: 'og:image:width', content: '1600' },
       { property: 'og:image:height', content: '900' },
 
@@ -112,9 +114,9 @@ export function useBlogMeta(post: BlogPost) {
         name: 'twitter:card',
         content: social.twitterCard || 'summary_large_image'
       },
-      { name: 'twitter:creator', content: social.twitterCreator }
+      { name: 'twitter:creator', content: social.twitterCreator },
       // twitter:site TODO:
-      // { name: 'twitter:site', content: '@dibbler' },
+      { name: 'twitter:site', content: '@dibblerapp' }
     ],
     link: [
       { rel: 'canonical', href: meta.canonical },

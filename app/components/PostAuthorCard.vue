@@ -7,6 +7,7 @@
         v-if="author.image"
         :src="author.image"
         :alt="author.name"
+        loading="lazy"
         class="w-12 h-12 rounded-full object-cover"
       />
     </NuxtLink>

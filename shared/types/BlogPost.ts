@@ -40,6 +40,7 @@ export interface BlogPost {
   // ─── Open Graph & Twitter ────────────────────────
   social: {
     ogTitle?: string
+    ogSiteName?: string
     ogDescription?: string
     ogImage?: string
     ogType?: 'article' | 'website'
