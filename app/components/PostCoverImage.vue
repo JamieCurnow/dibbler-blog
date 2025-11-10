@@ -1,10 +1,10 @@
 <template>
-  <div class="mb-10">
+  <figure class="mb-10">
     <img :src="image.url" :alt="image.alt || title" class="w-full h-auto rounded-lg object-cover" />
-    <p v-if="image.caption" class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+    <figcaption v-if="image.caption" class="text-sm text-gray-500 dark:text-gray-400 mt-2">
       {{ image.caption }}
-    </p>
-  </div>
+    </figcaption>
+  </figure>
 </template>
 
 <script setup lang="ts">
