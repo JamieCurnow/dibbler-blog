@@ -14,7 +14,7 @@ Carrots are one of the easiest and most rewarding vegetables to grow in the UK. 
 
 ---
 
-## 🪴 When to Sow Carrots in the UK 
+## When to Sow Carrots in the UK 🪴
 
 Carrots prefer cool, moist soil for germination.  
 - **Outdoor sowing:** March to June (southern UK can start earlier under cloches).  
@@ -25,7 +25,7 @@ Avoid sowing during prolonged cold or wet spells — carrot seeds are slow to ge
 
 ---
 
-## 🌱 Preparing the Soil
+## Preparing the Soil 🌱
 
 Carrots grow best in **light, stone-free, well-drained soil**.  
 Heavy clay or compacted beds can cause roots to fork or twist.
@@ -39,7 +39,7 @@ Heavy clay or compacted beds can cause roots to fork or twist.
 
 ---
 
-## 🌾 How to Sow Carrots
+## How to Sow Carrots 🌾
 
 1. Mark shallow drills about **1 cm deep** and **15–20 cm apart**.  
 2. Sow seeds **thinly** — roughly one seed every 2–3 cm.  
@@ -52,7 +52,7 @@ If seedlings are crowded, thin them once they’re 2 cm tall — final spacing a
 
 ---
 
-## 🐛 Preventing Carrot Fly
+## Preventing Carrot Fly 🐛
 
 Carrot fly is the main pest to watch out for in the UK.  
 Here’s how to prevent it:
@@ -66,7 +66,7 @@ Here’s how to prevent it:
 
 ---
 
-## 💧 Watering and Feeding
+## Watering and Feeding 💧
 
 Carrots don’t need much feeding — too much nitrogen encourages leaf growth over roots.  
 - Keep the soil **evenly moist**, especially during germination and dry spells.  
@@ -74,7 +74,7 @@ Carrots don’t need much feeding — too much nitrogen encourages leaf growth o
 
 ---
 
-## 🌿 Harvesting Carrots
+## Harvesting Carrots 🌿
 
 Most carrot varieties are ready **12–16 weeks** after sowing.  
 - Early types (e.g. ‘Nantes’) from **June**.  
@@ -86,7 +86,7 @@ Gently lift roots with a fork to loosen the soil, then pull by hand.
 
 ---
 
-## 🥕 Storing Carrots
+## Storing Carrots 🥕
 
 Brush off soil and store in boxes of **slightly damp sand or sawdust** in a cool, dark shed.  
 Check occasionally for rot or pest damage.
@@ -95,31 +95,40 @@ Alternatively, leave carrots in the ground under a thick mulch through winter in
 
 ---
 
-## ❓ Common Questions
+## Common Questions ❓
 
 ### When should I sow carrots in the UK?
-From **March to June**, depending on your region. In milder areas, sow under cover from **February**.
+**March–June** outdoors; in mild regions, sow under cover from **February**.
 
 ### How do I stop carrot fly?
-Use **fine mesh barriers**, **sow resistant varieties**, and **avoid thinning** when flies are active.
+Use **fine mesh barriers**, choose **resistant varieties**, and **avoid thinning** when flies are active.
 
 ### Why are my carrots forked or stunted?
-Usually due to **stony soil**, **fresh manure**, or **overcrowding** during early growth.
+Usually **stony soil**, **fresh manure**, or **overcrowding** early on.
+
+### Can I grow carrots in containers?
+Yes — choose **deep (30 cm+)** containers, a **sandy loam** mix, and **baby/round** types like *Parmex* for tight spaces.
+
+### How deep should the soil be?
+Aim for **25–30 cm** of loosened, obstruction-free soil for straight roots.
+
+### How long do carrot seeds take to germinate?
+Typically **7–21 days** depending on soil temperature and moisture.
 
 ---
 
-## 🧺 Recommended UK Varieties
+## Recommended UK Varieties 🧺
 
-| Type | Variety | Harvest Window | Notes |
-|------|----------|----------------|-------|
-| Early | 'Nantes 2' | June–August | Smooth, sweet, fast-growing |
-| Maincrop | 'Autumn King' | September–November | Long roots, excellent storage |
-| Resistant | 'Flyaway' | July–October | Carrot fly resistant |
-| Baby | 'Parmex' | June–August | Round roots, great for containers |
+| Type      | Variety        | Harvest Window        | Notes                           |
+|-----------|-----------------|-----------------------|----------------------------------|
+| Early     | *Nantes 2*      | June–August           | Smooth, sweet, fast-growing      |
+| Maincrop  | *Autumn King*   | September–November    | Long roots, excellent storage    |
+| Resistant | *Flyaway*       | July–October          | Carrot fly resistant             |
+| Baby      | *Parmex*        | June–August           | Round roots, great in containers |
 
 ---
 
-## 🌼 Summary
+## Summary 🌼
 
 Growing carrots in the UK is simple once you get the basics right — light soil, thin sowing, steady moisture, and carrot-fly protection.  
 Follow these steps and you’ll be rewarded with crisp, sweet, and perfectly formed roots all season long.

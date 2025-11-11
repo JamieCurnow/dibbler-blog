@@ -3,10 +3,13 @@
     class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8 pb-8 border-b border-gray-200 dark:border-gray-700"
   >
     <NuxtLink :to="authorLink" class="shrink-0">
-      <img
+      <NuxtImg
         v-if="author.image"
         :src="author.image"
         :alt="author.name"
+        format="webp"
+        height="96"
+        width="96"
         loading="lazy"
         class="w-12 h-12 rounded-full object-cover"
       />
