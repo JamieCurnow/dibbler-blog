@@ -1,28 +1,9 @@
-import type { Author } from '~~/shared/types/BlogPost'
+import type { Author } from '~~/shared/types/Author'
 
-export interface AuthorProfile extends Author {
-  uid: string
-  slug: string
-  name: string
-  title?: string
-  image?: string
-  yearsExperience?: number
-  focusRegion?: string
-  credentials?: string[]
-  social?: {
-    twitter?: string
-    github?: string
-    website?: string
-  }
-  content: string // markdown
-  meta: {
-    title: string
-    description: string
-    canonical: string
-  }
-}
-
-export const jamieCurnow: AuthorProfile = {
+export const jamieCurnow: Author = {
+  created: new Date().toISOString(),
+  updated: new Date().toISOString(),
+  id: 'author-jamie-curnow',
   uid: 'jamie-curnow',
   slug: 'jamie-curnow',
   name: 'Jamie Curnow',

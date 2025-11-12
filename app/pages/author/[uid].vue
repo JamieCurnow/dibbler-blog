@@ -81,13 +81,12 @@
 
 <script setup lang="ts">
 import { jamieCurnow } from '~~/shared/mockData/authors/jamie-curnow'
-import type { AuthorProfile } from '~~/shared/mockData/authors/jamie-curnow'
 
 const route = useRoute()
 const uid = route.params.uid as string
 
 // Mock author data lookup (in real app, you'd fetch by uid)
-const authors: Record<string, AuthorProfile> = {
+const authors: Record<string, Author> = {
   'jamie-curnow': jamieCurnow
 }
 

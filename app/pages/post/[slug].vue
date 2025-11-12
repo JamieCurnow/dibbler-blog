@@ -23,13 +23,19 @@
 </template>
 
 <script setup lang="ts">
-import { carrots } from '~~/shared/mockData/how-to-grow-carrots'
 import AtAGlance from '~~/app/components/AtAGlance.vue'
 import PostHeader from '~~/app/components/PostHeader.vue'
 import PostCoverImage from '~~/app/components/PostCoverImage.vue'
 import PostAuthorCard from '~~/app/components/PostAuthorCard.vue'
 import StickyToc from '~~/app/components/StickyToc.vue'
-const post = carrots
+
+const slug = useRoute().params.slug as string
+
+const { data } = await useFetch<BlogPost>(`/api/post/${slug}`)
+const post = data.value
+if (!post) {
+  throw createError({ statusCode: 404, statusMessage: 'Blog post not found' })
+}
 
 // head
 useBlogMeta(post)

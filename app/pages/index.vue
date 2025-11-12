@@ -14,7 +14,7 @@
           :key="post.id"
           class="group relative bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden"
         >
-          <NuxtLink :to="`/blog/${post.slug}`" class="block">
+          <NuxtLink :to="`/post/${post.slug}`" class="block">
             <div class="overflow-hidden">
               <img
                 :src="post.coverImage.url"

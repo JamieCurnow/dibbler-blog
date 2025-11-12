@@ -1,4 +1,8 @@
-export interface BlogPost {
+import type { Author } from './Author'
+import type { BaseDocument } from './BaseDocument'
+import type { ToMongoDoc } from './MongoDocument'
+
+export interface BlogPost extends BaseDocument {
   // ─── Core content ────────────────────────────────
   id: string
   slug: string
@@ -49,36 +53,35 @@ export interface BlogPost {
   }
 
   // ─── Structured Data (JSON-LD) ───────────────────
-  schema: {
-    type: 'BlogPosting'
-    headline: string
-    description: string
-    image: string
-    author: Author
-    publisher: {
-      name: string
-      logo: {
-        url: string
-        width?: number
-        height?: number
-      }
-    }
-    howTo?: HowToSchema
-    faq?: FaqSchema[]
-    // Optional identifiers for linking structured data blocks
-    id?: string // @id for BlogPosting
-    howToId?: string // @id for HowTo block
-    faqId?: string // @id for FAQPage block
-    mainEntityOfPage?: string
-  }
+  schema: BlogPostSchema
 }
 
-export interface Author {
-  uid: string
-  slug: string
-  name: string
-  image?: string
-  bio?: string
+export type BlogPostDoc = ToMongoDoc<Omit<BlogPost, 'author' | 'schema'>> & {
+  author: string
+  schema: Omit<BlogPostSchema, 'author'> & { author: string }
+}
+
+export interface BlogPostSchema {
+  type: 'BlogPosting'
+  headline: string
+  description: string
+  image: string
+  author: Author
+  publisher: {
+    name: string
+    logo: {
+      url: string
+      width?: number
+      height?: number
+    }
+  }
+  howTo?: HowToSchema
+  faq?: FaqSchema[]
+  // Optional identifiers for linking structured data blocks
+  id?: string // @id for BlogPosting
+  howToId?: string // @id for HowTo block
+  faqId?: string // @id for FAQPage block
+  mainEntityOfPage?: string
 }
 
 export interface HowToSchema {

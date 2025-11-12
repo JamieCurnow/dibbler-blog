@@ -1,16 +1,17 @@
-import type { BlogPost } from '../types/BlogPost'
-import { jamieCurnow } from './authors/jamie-curnow'
+export default defineEventHandler(async (event) => {
+  const db = await useDb()
 
-const author = jamieCurnow
+  const author = 'jamie-curnow'
 
-export const carrots: BlogPost = {
-  created: new Date().toISOString(),
-  updated: new Date().toISOString(),
-  id: 'how-to-grow-carrots',
-  slug: 'how-to-grow-carrots',
-  title: 'How to Grow Carrots (UK Guide)',
-  subtitle: 'From sowing to harvest — crisp, sweet roots every time.',
-  content: `From sowing to harvest — crisp, sweet roots every time.
+  await db.posts.findOneAndReplace(
+    { slug: 'how-to-grow-carrots' },
+    {
+      created: new Date().toISOString(),
+      updated: new Date().toISOString(),
+      slug: 'how-to-grow-carrots',
+      title: 'How to Grow Carrots (UK Guide)',
+      subtitle: 'From sowing to harvest — crisp, sweet roots every time.',
+      content: `From sowing to harvest — crisp, sweet roots every time.
 
 Carrots are one of the easiest and most rewarding vegetables to grow in the UK. With the right soil and sowing times, you can harvest bright, flavourful roots from early summer right through to autumn.
 
@@ -135,85 +136,91 @@ Typically **7–21 days** depending on soil temperature and moisture.
 Growing carrots in the UK is simple once you get the basics right — light soil, thin sowing, steady moisture, and carrot-fly protection.  
 Follow these steps and you’ll be rewarded with crisp, sweet, and perfectly formed roots all season long.
 `,
-  excerpt: 'Learn how to grow carrots in the UK — sowing times, soil prep, thinning, and harvesting tips.',
-  coverImage: {
-    url: '/img/carrots.jpg',
-    alt: 'A bunch of freshly harvested carrots',
-    caption: 'Freshly harvested carrots from the garden'
-  },
-  author,
-  datePublished: '2025-03-21',
-  category: 'Root Vegetables',
-  tags: ['carrots', 'sowing', 'root crops', 'spring'],
-  atAGlance: {
-    summary:
-      'Sow Feb–Jun in light, stone-free soil; thin to 5 cm; harvest June–Nov. Protect from carrot fly with mesh. Recommended varieties: Nantes 2, Autumn King, Flyaway.',
-    sowingMonths: ['Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    harvestMonths: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
-    spacing: {
-      inRow: '5 cm',
-      betweenRows: '15–20 cm',
-      depth: '1 cm'
-    }
-  },
-  meta: {
-    title: 'How to Grow Carrots (UK Guide) | Dibbler Blog',
-    description:
-      'Step-by-step guide to growing carrots from seed in the UK — sowing, thinning, and harvesting advice.',
-    canonical: 'https://dibbler.app/post/how-to-grow-carrots'
-  },
-  social: {
-    ogTitle: 'How to Grow Carrots (UK Guide)',
-    ogDescription: 'Step-by-step guide to sowing, thinning, and harvesting carrots for the best results.',
-    ogImage: 'https://dibbler.app/images/posts/how-to-grow-carrots.jpg',
-    ogType: 'article',
-    twitterCard: 'summary_large_image',
-    twitterCreator: '@dibblerapp'
-  },
-  schema: {
-    type: 'BlogPosting',
-    headline: 'How to Grow Carrots',
-    description:
-      'Learn how to grow carrots in the UK — sowing times, soil preparation, thinning, and harvesting tips.',
-    image: 'https://dibbler.app/images/posts/how-to-grow-carrots.jpg',
-    author: jamieCurnow,
-    publisher: {
-      name: 'Dibbler Blog',
-      logo: {
-        url: 'https://dibbler.app/images/logo-192.png',
-        width: 192,
-        height: 192
-      }
-    },
-    howTo: {
-      name: 'Grow Carrots from Seed',
-      totalTime: 'P12W',
-      supply: [
-        'Carrot seeds',
-        'Fine compost or seed compost',
-        'Horticultural sand (for heavy soils)',
-        'Insect mesh or fleece (for carrot fly protection)'
-      ],
-      tool: ['Rake', 'Garden fork', 'Watering can or fine rose'],
-      steps: [
-        { name: 'Prepare soil', text: 'Loosen and remove stones.' },
-        { name: 'Sow seeds', text: 'Sow thinly in shallow drills 1 cm deep.' },
-        { name: 'Thin seedlings', text: 'When 2 cm tall, thin to 5 cm apart.' },
-        {
-          name: 'Harvest',
-          text: 'Lift roots when mature, usually 12–16 weeks after sowing.'
-        }
-      ]
-    },
-    faq: [
-      {
-        question: 'When should I sow carrots in the UK?',
-        answer: 'From March to June, or under cover from February.'
+      excerpt:
+        'Learn how to grow carrots in the UK — sowing times, soil prep, thinning, and harvesting tips.',
+      coverImage: {
+        url: '/img/carrots.jpg',
+        alt: 'A bunch of freshly harvested carrots',
+        caption: 'Freshly harvested carrots from the garden'
       },
-      {
-        question: 'How do I stop carrot fly?',
-        answer: 'Use fine mesh or grow resistant varieties like “Flyaway”.'
+      author,
+      datePublished: '2025-03-21',
+      category: 'Root Vegetables',
+      tags: ['carrots', 'sowing', 'root crops', 'spring'],
+      atAGlance: {
+        summary:
+          'Sow Feb–Jun in light, stone-free soil; thin to 5 cm; harvest June–Nov. Protect from carrot fly with mesh. Recommended varieties: Nantes 2, Autumn King, Flyaway.',
+        sowingMonths: ['Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        harvestMonths: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+        spacing: {
+          inRow: '5 cm',
+          betweenRows: '15–20 cm',
+          depth: '1 cm'
+        }
+      },
+      meta: {
+        title: 'How to Grow Carrots (UK Guide) | Dibbler Blog',
+        description:
+          'Step-by-step guide to growing carrots from seed in the UK — sowing, thinning, and harvesting advice.',
+        canonical: 'https://dibbler.app/post/how-to-grow-carrots'
+      },
+      social: {
+        ogTitle: 'How to Grow Carrots (UK Guide)',
+        ogDescription: 'Step-by-step guide to sowing, thinning, and harvesting carrots for the best results.',
+        ogImage: 'https://dibbler.app/images/posts/how-to-grow-carrots.jpg',
+        ogType: 'article',
+        twitterCard: 'summary_large_image',
+        twitterCreator: '@dibblerapp'
+      },
+      schema: {
+        type: 'BlogPosting',
+        headline: 'How to Grow Carrots',
+        description:
+          'Learn how to grow carrots in the UK — sowing times, soil preparation, thinning, and harvesting tips.',
+        image: 'https://dibbler.app/images/posts/how-to-grow-carrots.jpg',
+        author,
+        publisher: {
+          name: 'Dibbler Blog',
+          logo: {
+            url: 'https://dibbler.app/images/logo-192.png',
+            width: 192,
+            height: 192
+          }
+        },
+        howTo: {
+          name: 'Grow Carrots from Seed',
+          totalTime: 'P12W',
+          supply: [
+            'Carrot seeds',
+            'Fine compost or seed compost',
+            'Horticultural sand (for heavy soils)',
+            'Insect mesh or fleece (for carrot fly protection)'
+          ],
+          tool: ['Rake', 'Garden fork', 'Watering can or fine rose'],
+          steps: [
+            { name: 'Prepare soil', text: 'Loosen and remove stones.' },
+            { name: 'Sow seeds', text: 'Sow thinly in shallow drills 1 cm deep.' },
+            { name: 'Thin seedlings', text: 'When 2 cm tall, thin to 5 cm apart.' },
+            {
+              name: 'Harvest',
+              text: 'Lift roots when mature, usually 12–16 weeks after sowing.'
+            }
+          ]
+        },
+        faq: [
+          {
+            question: 'When should I sow carrots in the UK?',
+            answer: 'From March to June, or under cover from February.'
+          },
+          {
+            question: 'How do I stop carrot fly?',
+            answer: 'Use fine mesh or grow resistant varieties like “Flyaway”.'
+          }
+        ]
       }
-    ]
-  }
-}
+    },
+    { upsert: true }
+  )
+
+  return { success: true }
+})
