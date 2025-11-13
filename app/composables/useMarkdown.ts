@@ -6,6 +6,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeStringify from 'rehype-stringify'
+import rehypeImageCaption from 'rehype-image-caption'
 
 // Build the processor once (faster)
 const processor = unified()
@@ -13,6 +14,7 @@ const processor = unified()
   .use(remarkGfm) // ← tables, task lists, autolinks, strikethrough
   .use(remarkRehype)
   .use(rehypeSlug) // ← adds id="..." to h1–h6 using GitHub-style slugs
+  .use(rehypeImageCaption)
   .use(rehypeAutolinkHeadings, {
     behavior: 'wrap',
     properties: { class: 'heading-anchor' }

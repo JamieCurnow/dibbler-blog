@@ -8,7 +8,29 @@
         </p>
       </header>
 
-      <div class="grid gap-10 lg:grid-cols-2">
+      <form class="max-w-2xl w-full mx-auto mb-10" @submit.prevent>
+        <div class="flex gap-4 w-full">
+          <div class="flex-grow">
+            <UInput
+              v-model="search"
+              placeholder="Search articles..."
+              size="xl"
+              class="w-full"
+              variant="subtle"
+              icon="i-heroicons-magnifying-glass-20-solid"
+              clearable
+              color="neutral"
+              aria-label="Search blog posts"
+              @keyup.enter="refresh"
+            />
+          </div>
+          <div>
+            <UButton :loading="pending" size="xl" color="neutral">Search</UButton>
+          </div>
+        </div>
+      </form>
+
+      <div class="grid gap-10 lg:grid-cols-2" v-if="posts.length">
         <article
           v-for="post in posts"
           :key="post.id"
@@ -61,12 +83,46 @@
           </NuxtLink>
         </article>
       </div>
+
+      <!-- no posts found -->
+      <div v-else class="text-center py-20">
+        <h2 class="text-3xl font-bold text-gray-500 dark:text-white mb-4">No articles found</h2>
+        <p class="text-gray-600 dark:text-gray-400">
+          Try adjusting your search or filter to find what you're looking for.
+        </p>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { carrots } from '~~/shared/mockData/how-to-grow-carrots'
+import { useRouteQuery } from '@vueuse/router'
 
-const posts = [carrots]
+const toNumber = (val: string | number | null | undefined, defaultValue = 0): number => {
+  const num = Number(val)
+  return isNaN(num) ? defaultValue : num
+}
+
+// Local input state with debounce to avoid refetching on every keystroke
+const page = useRouteQuery<number>('page', 1, { transform: toNumber })
+const size = useRouteQuery<number>('size', 10, { transform: toNumber })
+
+const search = useRouteQuery<string>('search')
+
+const { data, refresh, pending } = await useAsyncData(
+  'posts',
+  () => {
+    const urlParams = new URLSearchParams()
+    urlParams.append('page', page.value.toString())
+    urlParams.append('size', size.value.toString())
+    if (search.value) urlParams.append('search', search.value)
+    const stringParams = urlParams.toString()
+    return $fetch<{ data: BlogPost[]; nextPage: string | undefined }>(`/api/post?${stringParams}`)
+  },
+  {
+    watch: [page]
+  }
+)
+
+const posts = computed(() => data.value?.data || [])
 </script>

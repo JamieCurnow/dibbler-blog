@@ -38,7 +38,7 @@
         </div>
 
         <!-- Social Links -->
-        <div v-if="author.social" class="flex justify-center gap-4">
+        <!-- <div v-if="author.social" class="flex justify-center gap-4">
           <a
             v-if="author.social.website"
             :href="author.social.website"
@@ -60,7 +60,7 @@
           >
             GitHub
           </a>
-        </div>
+        </div> -->
       </header>
 
       <!-- Author Bio Content -->
@@ -80,32 +80,29 @@
 </template>
 
 <script setup lang="ts">
-import { jamieCurnow } from '~~/shared/mockData/authors/jamie-curnow'
-
 const route = useRoute()
 const uid = route.params.uid as string
 
-// Mock author data lookup (in real app, you'd fetch by uid)
-const authors: Record<string, Author> = {
-  'jamie-curnow': jamieCurnow
+const { data } = await useFetch<Author>(`/api/author/${uid}`)
+const author = data.value
+if (!author) {
+  throw createError({ statusCode: 404, statusMessage: 'Author not found' })
 }
-
-const author = computed(() => authors[uid] || null)
 
 // Set head meta
 watchEffect(() => {
-  if (author.value) {
+  if (author?.meta) {
     useHead({
-      title: author.value.meta.title,
+      title: author.meta.title,
       meta: [
-        { name: 'description', content: author.value.meta.description },
+        { name: 'description', content: author.meta.description },
         { name: 'robots', content: 'index, follow' }
       ],
-      link: [{ rel: 'canonical', href: author.value.meta.canonical }]
+      link: [{ rel: 'canonical', href: author.meta.canonical }]
     })
   }
 })
 
 // Render markdown content
-const { html } = useMarkdown(author.value?.content || '')
+const { html } = useMarkdown(author?.content || '')
 </script>

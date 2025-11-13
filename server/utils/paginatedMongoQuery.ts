@@ -1,4 +1,4 @@
-import type { Collection, Filter, Document } from 'mongodb'
+import type { Collection, Filter, Document, FindOptions } from 'mongodb'
 import type { H3Event } from 'h3'
 import type { PaginationParams } from '~~/shared/types/Pagination'
 
@@ -6,6 +6,7 @@ interface QueryOpts<T extends Document> {
   collection: Collection<T>
   pagination?: PaginationParams
   query?: Filter<T>
+  queryOptions?: FindOptions
 }
 
 /**
@@ -28,7 +29,7 @@ interface QueryOpts<T extends Document> {
  * })
  */
 export const paginatedMongoQuery = async <T extends Document>(event: H3Event, opts: QueryOpts<T>) => {
-  const { collection, pagination, query = {} } = opts
+  const { collection, pagination, query = {}, queryOptions = {} } = opts
 
   const queryParams = getQuery(event)
   let page = pagination?.page || Number(queryParams.page) || undefined
@@ -48,7 +49,7 @@ export const paginatedMongoQuery = async <T extends Document>(event: H3Event, op
   // build mongo query with skip/limit
   const skip = (page - 1) * size
   const limit = size + 1 // fetch one extra to check for next page
-  const data = await collection.find(query).skip(skip).limit(limit).toArray()
+  const data = await collection.find(query, queryOptions).skip(skip).limit(limit).toArray()
 
   // build next page url if there are data
   const hasNextPage = data.length > limit

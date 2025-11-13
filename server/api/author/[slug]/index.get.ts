@@ -8,5 +8,5 @@ export default defineCachedEventHandler(
     if (!author) throw createError({ statusCode: 404, statusMessage: 'Author not found' })
     return getDocData(author)
   },
-  { maxAge: 3600 }
+  { maxAge: 3600, shouldBypassCache }
 )

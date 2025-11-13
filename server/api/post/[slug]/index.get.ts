@@ -1,3 +1,5 @@
+import { authorifyPost } from '~~/server/utils/authorifyPost'
+
 export default defineCachedEventHandler(
   async (event) => {
     const db = await useDb()
@@ -5,21 +7,9 @@ export default defineCachedEventHandler(
     const postDoc = await db.posts.findOne({ slug })
     if (!postDoc) throw createError({ statusCode: 404, statusMessage: 'Blog post not found' })
 
-    const authorDoc = await db.authors.findOne({ slug: postDoc.author })
-    if (!authorDoc) throw createError({ statusCode: 404, statusMessage: 'Author data missing' })
-
-    const author = getDocData(authorDoc)
-
-    const post: BlogPost = {
-      ...getDocData(postDoc),
-      author,
-      schema: {
-        ...postDoc.schema,
-        author
-      }
-    }
+    const post = await authorifyPost(postDoc)
 
     return post
   },
-  { maxAge: 3600 }
+  { maxAge: 3600, shouldBypassCache }
 )

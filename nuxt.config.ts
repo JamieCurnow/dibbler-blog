@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     mongoUri: ''
   },
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxtjs/critters'],
+  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxtjs/critters', '@vueuse/nuxt'],
   css: ['~/assets/css/main.css'],
   app: {
     head: {

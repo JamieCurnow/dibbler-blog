@@ -97,3 +97,17 @@
 .markdown .heading-anchor {
   @apply text-black dark:text-white no-underline hover:no-underline;
 }
+
+/* Image Caption and images */
+/* <figure><img src="/img/jamie-produce.jpg" alt="Jamie in the garden with his harvest of vegetables"><figcaption>Jamie in the garden with his harvest of vegetables</figcaption></figure> */
+.markdown figure {
+  @apply my-6 max-w-3/4 mx-auto block;
+}
+
+.markdown figure img {
+  @apply rounded-lg;
+}
+
+.markdown figcaption {
+  @apply text-center text-sm text-gray-600 dark:text-gray-400 mt-2;
+}
