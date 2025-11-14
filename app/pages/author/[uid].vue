@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-gray-900 min-h-screen py-12">
+  <div class="min-h-screen py-12">
     <div v-if="!author" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Author not found</h1>
       <NuxtLink to="/" class="text-primary-600 hover:underline">← Back to blog</NuxtLink>
@@ -68,12 +68,7 @@
 
       <!-- Navigation -->
       <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-        <NuxtLink
-          to="/"
-          class="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
-        >
-          ← Back to blog
-        </NuxtLink>
+        <button type="button" class="link" @click="back">← Back to blog</button>
       </div>
     </div>
   </div>
@@ -82,6 +77,17 @@
 <script setup lang="ts">
 const route = useRoute()
 const uid = route.params.uid as string
+
+const maybeFrom = useRoute().query.from as string | undefined
+const from = maybeFrom || '/'
+
+const back = () => {
+  if (import.meta.client && window.history.length > 1) {
+    window.history.back()
+    return
+  }
+  return navigateTo(from, { replace: true })
+}
 
 const { data } = await useFetch<Author>(`/api/author/${uid}`)
 const author = data.value

@@ -111,3 +111,7 @@
 .markdown figcaption {
   @apply text-center text-sm text-gray-600 dark:text-gray-400 mt-2;
 }
+
+.link {
+  @apply font-bold text-base text-gray-800 dark:text-gray-200 hover:underline;
+}

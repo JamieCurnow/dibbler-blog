@@ -15,11 +15,7 @@
       />
     </NuxtLink>
     <div class="grow">
-      <NuxtLink
-        :to="authorLink"
-        rel="author"
-        class="font-bold text-base text-gray-800 dark:text-gray-200 hover:underline"
-      >
+      <NuxtLink :to="authorLink" rel="author" class="link">
         {{ author.name }}
       </NuxtLink>
       <p v-if="author.bio" class="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -43,10 +39,10 @@ interface Author {
 
 const props = defineProps<{ author: Author }>()
 
+const routePath = useRoute().path
+
 const authorLink = computed(() => {
-  if (props.author.url) return props.author.url
-  if (props.author.slug) return `/author/${props.author.slug}`
-  if (props.author.uid) return `/author/${props.author.uid}`
+  if (props.author.slug) return `/author/${props.author.slug}?from=${routePath}`
   return '#'
 })
 </script>
