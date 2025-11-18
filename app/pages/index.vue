@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <main class="">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <header class="text-center mb-12">
         <h1 class="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">Dibbler Blog</h1>
@@ -92,7 +92,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -125,4 +125,62 @@ const { data, refresh, pending } = await useAsyncData(
 )
 
 const posts = computed(() => data.value?.data || [])
+
+// SEO Optimization
+const title = 'Dibbler Blog - Gardening Tips & Tricks'
+const description = 'Your go-to source for gardening tips and tricks. Explore our latest articles on planting, growing, and maintaining your garden.'
+const baseUrl = 'https://dibbler.com/blog' // Placeholder base URL
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogImage: 'https://dibbler.com/og-image.jpg', // Placeholder OG Image
+  twitterCard: 'summary_large_image',
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: 'https://dibbler.com/og-image.jpg', // Placeholder Twitter Image
+})
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: baseUrl
+    }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: 'Dibbler Blog',
+        url: baseUrl,
+        description: description,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Dibbler',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://dibbler.com/logo.png' // Placeholder logo
+          }
+        },
+        blogPost: posts.value.map(post => ({
+          '@type': 'BlogPosting',
+          headline: post.title,
+          image: post.coverImage.url,
+          datePublished: post.datePublished,
+          author: {
+            '@type': 'Person',
+            name: post.author.name
+          },
+          url: `${baseUrl}/post/${post.slug}`
+        }))
+      })
+    }
+  ]
+})
 </script>
+
